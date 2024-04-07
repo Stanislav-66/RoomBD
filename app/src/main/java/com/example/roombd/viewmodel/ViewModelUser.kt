@@ -21,8 +21,8 @@ class ViewModelUser(val bd: BD) : ViewModel()
 
     fun enterApp(list: List<User>, navController: NavController)
     {
-        list.map { user -> login.value == user.login && password.value == user.password }
-        if(list.isEmpty())
+        val filteredList = list.filter { user -> login.value == user.login && password.value == user.password }
+        if(filteredList.isEmpty())
         {
             Toast.makeText(context, "Неправильный логин или пароль", Toast.LENGTH_SHORT).show()
         }
